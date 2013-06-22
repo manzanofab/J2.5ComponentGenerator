@@ -287,11 +287,11 @@ class $comName"."Helper {
 }
 
 ?>";
-
-$admin_language = "";
-$admin_language_sys = "COM_$comName"."=\"Component Name Modify me on the language file folder ADMIN\"
-COM_$comName"."_DESCRIPTION=\"Component Description Modify me on the language file folder ADMIN\"
-COM_$comName"."_TITLE=\"Component Menu Modify me on the language file folder ADMIN\"
+$comName_Uppercase = strtoupper($comName);
+$admin_language = "COM_$comName_Uppercase"."_TITLE=\"Component Menu Modify me on the language file folder ADMIN\"";
+$admin_language_sys = "COM_$comName_Uppercase"."=\"Component Name Modify me on the language file folder ADMIN\"
+COM_$comName_Uppercase"."_DESCRIPTION=\"Component Description Modify me on the language file folder ADMIN\"
+COM_$comName_Uppercase"."_TITLE=\"Component Menu Modify me on the language file folder ADMIN\"
 ";
 $admin_model="<?php
 /**
