@@ -86,7 +86,8 @@
 					$string2_8    = $dir1."/".$dir2."/".$dir2_8;
 					$string2_9    = $dir1."/".$dir2."/".$dir2_9;
 					$string2_10   = $dir1."/".$dir2."/".$dir2_10;
-					$string2_10_1 = $dir1."/".$dir2."/".$dir2_10."/".$dir5."/".$dir5_1;
+					$string2_10_1 = $dir1."/".$dir2."/".$dir2_10."/".$dir5;
+					$string2_10_2 = $dir1."/".$dir2."/".$dir2_10."/".$dir5."/".$dir5_1;
 
 					$string3_1    = $dir1."/".$dir3."/".$dir3_1;
 					$string3_2    = $dir1."/".$dir3."/".$dir3_2;
@@ -105,7 +106,7 @@
 					$file1_1 = $comName.".xml"; //it should be actually the controller view name
 					$file2   = "com_$comName _css.css"; // css file 
 					$file3   = "helper.php";
-					$file4   = "com_$comName _js.js";//if you have custom js
+					$file4   = "com_$comName"."_js.js";//if you have custom js
 					$file5_1 = "en-GB.com_$comName.ini";
 					$file5_2 = "en-GB.com_$comName.sys.ini";
 					$file6_1 = $comName.".php";
@@ -220,7 +221,7 @@ jimport('joomla.application.component.controller');
 ".'$controller'."->execute(JRequest::getCmd('task'));
 ".'$controller'."->redirect();
 ";
-$file1_txt   = "<?php 
+$admin_controller   = "<?php 
 /**
  * @version     1.0.0
  * @package     com_$comName
@@ -229,7 +230,7 @@ $file1_txt   = "<?php
  */
 defined('_JEXEC') or die;
 jimport('joomla.application.component.controller');
-class ".$comName."Controller"."$comName extends JController {//this should be name of the controller called on the view
+class ".$comName."Controller"."changeName extends JController {//change name should be the view that its been called
 	
 	public function edit (){
 		
@@ -255,17 +256,83 @@ class ".$comName."Controller"."$comName extends JController {//this should be na
 $file_h1_txt = "<?php
 /**
  * @version     1.0.0
- * @package     com_fabianManzano
+ * @package     com_$comName
  * @copyright   Copyright (C) 2013 Fabian Manzano. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 defined('_JEXEC') or die;
 jimport('joomla.application.component.controller');
 class ".$comName."Controller extends JController {
-	
 
 }";
+$admin_helper = "<?php
+/**
+ * @version     1.0.0
+ * @package     com_$comName
+ * @copyright   Copyright (C) 2013 Fabian Manzano. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+defined('_JEXEC') or die;
+jimport('joomla.application.component.controller');
 
+
+
+class $comName"."Helper {
+	
+	public static function getmessage (){
+		
+		
+		}	
+}
+
+?>";
+
+$admin_language = "";
+$admin_language_sys = "COM_$comName"."=\"Component Name Modify me on the language file folder ADMIN\"
+COM_$comName"."_DESCRIPTION=\"Component Description Modify me on the language file folder ADMIN\"
+COM_$comName"."_TITLE=\"Component Menu Modify me on the language file folder ADMIN\"
+";
+$admin_model="<?php
+/**
+ * @version     1.0.0
+ * @package     com_$comName
+ * @copyright   Copyright (C) 2013 Fabian Manzano. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+defined('_JEXEC') or die;
+jimport('joomla.application.component.model');
+class comName"."Model"."$comName extends JModel {
+	
+}";
+$tpl = '$'.'tpl';
+$admin_view_html_php = "<?php
+/**
+ * @version     1.0.0
+ * @package     com_$comName
+ * @copyright   Copyright (C) 2013 Fabian Manzano. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+defined('_JEXEC') or die;
+jimport('joomla.application.component.view');
+	public function display (".$tpl.". = null){	
+		JToolBarHelper::title(JText::_('COM_$comName"."_TITLE'), 'fab.png');
+		JToolBarHelper::cancel('$comName".".cancel');
+		parent::display(".$tpl.");
+		}
+}";
+
+$admin_view_tmpl_default="<?php
+/**
+ * @version     1.0.0
+ * @package     com_$comName
+ * @copyright   Copyright (C) 2013 Fabian Manzano. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+defined('_JEXEC') or die;
+
+?>
+
+Fabian Manzano is awesome";
 
 /** IDEALLY THIS WILL COME FROM A DIFFERENT FILE **/
 
@@ -285,7 +352,7 @@ class ".$comName."Controller extends JController {
 					   mkdir($string2_8, 0700, true);  
 					   mkdir($string2_9, 0700, true);  
 					   mkdir($string2_10, 0700, true);  
-					   mkdir($string2_10_1, 0700, true);  		
+					   mkdir($string2_10_2, 0700, true);  		
 
 					   mkdir($string3_1, 0700, true);  
 					   mkdir($string3_2, 0700, true);  
@@ -328,9 +395,106 @@ fclose($ourFileHandle);
 $ourFileHandle = fopen("$string2_1/".$file, 'w') or die("can't open file");
 fwrite( $ourFileHandle, $index_txt );
 fclose($ourFileHandle);
+//------------------------ controller folder: index
+$ourFileHandle = fopen("$string2_2/".$file, 'w') or die("can't open file");
+fwrite( $ourFileHandle, $index_txt );
+fclose($ourFileHandle);
+//------------------------ controller folder: controller
+$ourFileHandle = fopen("$string2_2/"."changeName.php", 'w') or die("can't open file");
+fwrite( $ourFileHandle, $admin_controller );
+fclose($ourFileHandle);
+//------------------------ css folder: index
+$ourFileHandle = fopen("$string2_3/".$file, 'w') or die("can't open file");
+fwrite( $ourFileHandle, $index_txt );
+fclose($ourFileHandle);
+//------------------------ css folder: 
+$ourFileHandle = fopen("$string2_3/".$file2, 'w') or die("can't open file");
+fwrite( $ourFileHandle, "" );
+fclose($ourFileHandle);
+//------------------------ HELPER folder: index
+$ourFileHandle = fopen("$string2_4/".$file, 'w') or die("can't open file");
+fwrite( $ourFileHandle, $index_txt );
+fclose($ourFileHandle);
+//------------------------ HELPER folder: 
+$ourFileHandle = fopen("$string2_4/".$file3, 'w') or die("can't open file");
+fwrite( $ourFileHandle, $admin_helper  );
+fclose($ourFileHandle);
+//------------------------ JS folder: index
+$ourFileHandle = fopen("$string2_5/".$file, 'w') or die("can't open file");
+fwrite( $ourFileHandle, $index_txt );
+fclose($ourFileHandle);
+//------------------------ JS folder: 
+$ourFileHandle = fopen("$string2_5/".$file4, 'w') or die("can't open file");
+fwrite( $ourFileHandle, "" );
+fclose($ourFileHandle);
+
+//------------------------ LANGUAGE folder: index
+$ourFileHandle = fopen("$string2_6/".$file, 'w') or die("can't open file");
+fwrite( $ourFileHandle, $index_txt );
+fclose($ourFileHandle);
+//------------------------ LANGUAGE ENGLISH SUBfolder: index
+$ourFileHandle = fopen("$string2_6_1/".$file, 'w') or die("can't open file");
+fwrite( $ourFileHandle, $index_txt );
+fclose($ourFileHandle);
+//------------------------ LANGUAGE folder: 
+$ourFileHandle = fopen("$string2_6_1/".$file5_1, 'w') or die("can't open file");
+fwrite( $ourFileHandle, $admin_language );
+fclose($ourFileHandle);
+//------------------------ LANGUAGE folder: 
+$ourFileHandle = fopen("$string2_6_1/".$file5_2, 'w') or die("can't open file");
+fwrite( $ourFileHandle, $admin_language_sys);
+fclose($ourFileHandle);
+//------------------------ MODELS folder: index
+$ourFileHandle = fopen("$string2_7/".$file, 'w') or die("can't open file");
+fwrite( $ourFileHandle, $index_txt );
+fclose($ourFileHandle);
+//------------------------ MODELS folder: 
+$ourFileHandle = fopen("$string2_7/".$file1, 'w') or die("can't open file");
+fwrite( $ourFileHandle, $admin_model );
+fclose($ourFileHandle);
+//------------------------ MODELS folder: 
+$ourFileHandle = fopen("$string2_7/"."ONEPERVIEW.PHP", 'w') or die("can't open file");
+fwrite( $ourFileHandle, "" );
+fclose($ourFileHandle);
+//------------------------ SQL folder: INDEX 
+$ourFileHandle = fopen("$string2_8/".$file, 'w') or die("can't open file");
+fwrite( $ourFileHandle, $index_txt );
+fclose($ourFileHandle);
+//------------------------ SQL folder: 
+$ourFileHandle = fopen("$string2_8/install.mysql.utf8.sql", 'w') or die("can't open file");
+fwrite( $ourFileHandle, "" );
+fclose($ourFileHandle);
+//------------------------ SQL folder: 
+$ourFileHandle = fopen("$string2_8/uninstall.mysql.utf8.sql", 'w') or die("can't open file");
+fwrite( $ourFileHandle, "" );
+fclose($ourFileHandle);
+//------------------------ TABLES folder: INDEX 
+$ourFileHandle = fopen("$string2_9/".$file, 'w') or die("can't open file");
+fwrite( $ourFileHandle, $index_txt );
+fclose($ourFileHandle);
+//------------------------ VIEWS folder: INDEX 
+$ourFileHandle = fopen("$string2_10/".$file, 'w') or die("can't open file");
+fwrite( $ourFileHandle, $index_txt );
+fclose($ourFileHandle);
+//------------------------ VIEWS subfolder: INDEX 
+$ourFileHandle = fopen("$string2_10_1/".$file, 'w') or die("can't open file");
+fwrite( $ourFileHandle, $index_txt );
+fclose($ourFileHandle);
+//------------------------ VIEWS subfolder: VIEW.HTML.PHP 
+$ourFileHandle = fopen("$string2_10_1/view.html.php", 'w') or die("can't open file");
+fwrite( $ourFileHandle, $admin_view_html_php );
+fclose($ourFileHandle);
+//------------------------ VIEWS subfolder tmpl: INDEX 
+$ourFileHandle = fopen("$string2_10_2/".$file, 'w') or die("can't open file");
+fwrite( $ourFileHandle, $index_txt );
+fclose($ourFileHandle);
+//------------------------ VIEWS subfolder tmpl: default 
+$ourFileHandle = fopen("$string2_10_2/default.php", 'w') or die("can't open file");
+fwrite( $ourFileHandle, $admin_view_tmpl_default );
+fclose($ourFileHandle);
 
 //------------------------
-
+/** SITE FILES**/
 //------------------------
 
 				}
