@@ -1,0 +1,104 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+  padding-top: 50px;
+}
+#footer1 {
+  background: #2A2A2A;
+  color:white;
+  }
+#footer1 ul li{  list-style:none;}  
+.fabfooter{color: #178BFF;}
+
+/* ++++++++++++++  image float style ++++++++++++++ */
+.img-fulltext-left {
+  float: right;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.img-intro-left {
+  float: right;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.img-fulltext-right {
+  float:left;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.img-intro-right {
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.blog-featured h2 {
+  color: #178BFF;
+  font-size: 1.4em;
+  width: 95%;
+  text-align:left;
+  border-bottom: solid 1px #1684c3;
+}
+.items-leading {
+  background-color: #FCFCFC;
+}
+
+.items-row {
+  float: left;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 20px;
+  display: inline;
+  text-align: justify;
+}
+
+.item img {
+  float: right;
+  padding: 0.5em 2em 0.7em 2em;
+}
+.item p{
+  padding-right:2em;
+}
+.item {
+  float: left;
+  text-decoration: none;
+  /*background-color:purple;
+  margin-right: 10px;*/
+}
+.column-1 {
+  width:50%;
+}
+.column-2 {
+  width:50%;
+}
+p.readmore a {
+  -moz-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+  -webkit-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+  box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #79bbff), color-stop(1, #378de5) );
+  background:-moz-linear-gradient( center top, #79bbff 5%, #378de5 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#79bbff', endColorstr='#378de5');
+  background-color:#79bbff;
+  -moz-border-radius:6px;
+  -webkit-border-radius:6px;
+  border-radius:6px;
+  border:1px solid #84bbf3;
+  display:inline-block;
+  color:#ffffff;
+  font-family:arial;
+  font-size:15px;
+  font-weight:bold;
+  padding:6px 24px;
+  text-decoration:none;
+  text-shadow:1px 1px 0px #528ecc;
+}p.readmore:hover {
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #378de5), color-stop(1, #79bbff) );
+  background:-moz-linear-gradient( center top, #378de5 5%, #79bbff 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#378de5', endColorstr='#79bbff');
+  background-color:#378de5;
+}p.readmore:active {
+  position:relative;
+  top:1px;
+}
