@@ -97,7 +97,8 @@
 					$string3_5_1  = $dir1."/".$dir3."/".$dir3_5."/".$dir4;
 					$string3_6    = $dir1."/".$dir3."/".$dir3_6;
 					$string3_7    = $dir1."/".$dir3."/".$dir3_7;
-					$string3_7_1  = $dir1."/".$dir3."/".$dir3_7."/".$dir5."/".$dir5_1;
+					$string3_7_1  = $dir1."/".$dir3."/".$dir3_7."/".$dir5;
+					$string3_7_2  = $dir1."/".$dir3."/".$dir3_7."/".$dir5."/".$dir5_1;
 					
 					/** FILE DEFINITION: NAME OF THE FILES THAT NEEDS TO BE CREATED **/					
 					$file    = "index.html";
@@ -301,7 +302,7 @@ $admin_model="<?php
  */
 defined('_JEXEC') or die;
 jimport('joomla.application.component.model');
-class comName"."Model"."$comName extends JModel {
+class $comName"."Model"."$comName extends JModel {
 	
 }";
 $tpl = '$'.'tpl';
@@ -314,9 +315,25 @@ $admin_view_html_php = "<?php
  */
 defined('_JEXEC') or die;
 jimport('joomla.application.component.view');
-	public function display (".$tpl.". = null){	
+class $comName"."View"."$comName extends JView {
+	public function display (".$tpl." = null){	
 		JToolBarHelper::title(JText::_('COM_$comName"."_TITLE'), 'fab.png');
 		JToolBarHelper::cancel('$comName".".cancel');
+		parent::display(".$tpl.");
+		}
+}";
+
+$site_view_html_php = "<?php
+/**
+ * @version     1.0.0
+ * @package     com_$comName
+ * @copyright   Copyright (C) 2013 Fabian Manzano. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+defined('_JEXEC') or die;
+jimport('joomla.application.component.view');
+class $comName"."View"."$comName extends JView {
+	public function display (".$tpl." = null){	
 		parent::display(".$tpl.");
 		}
 }";
@@ -334,6 +351,14 @@ defined('_JEXEC') or die;
 
 Fabian Manzano is awesome";
 
+$site_default_xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>
+<metadata>
+	<layout title=\"Fisrt Page\">
+		<message>Fisrt Page</message>
+	</layout>
+</metadata>";
+
+$site_metadata_xml = "";
 /** IDEALLY THIS WILL COME FROM A DIFFERENT FILE **/
 
 
@@ -363,6 +388,7 @@ Fabian Manzano is awesome";
 					   mkdir($string3_6, 0700, true);  
 					   mkdir($string3_7, 0700, true);  
 					   mkdir($string3_7_1, 0700, true);  
+					   mkdir($string3_7_2, 0700, true);  
 					}
 
 /** ADD INTO EACH PATH THE FILES REQUIRED **/
@@ -496,6 +522,102 @@ fclose($ourFileHandle);
 //------------------------
 /** SITE FILES**/
 //------------------------
+#index
+$ourFileHandle = fopen("$dir1/$dir3/".$file, 'w') or die("can't open file");
+fwrite( $ourFileHandle, $index_txt );
+fclose($ourFileHandle);
+//------------------------ component name.php
+$ourFileHandle = fopen("$dir1/$dir3/".$file1, 'w') or die("can't open file");
+fwrite( $ourFileHandle, $admin_component );
+fclose($ourFileHandle);
+//------------------------ controller.php
+$ourFileHandle = fopen("$dir1/$dir3/".$file_h1, 'w') or die("can't open file");
+fwrite( $ourFileHandle, $file_h1_txt );
+fclose($ourFileHandle);
+//------------------------ controller folder: index
+$ourFileHandle = fopen("$string3_1/".$file, 'w') or die("can't open file");
+fwrite( $ourFileHandle, $index_txt );
+fclose($ourFileHandle);
+//------------------------ controller folder: controller
+$ourFileHandle = fopen("$string3_1/"."changeName.php", 'w') or die("can't open file");
+fwrite( $ourFileHandle, $admin_controller );
+fclose($ourFileHandle);
+
+//------------------------ css folder: index
+$ourFileHandle = fopen("$string3_2/".$file, 'w') or die("can't open file");
+fwrite( $ourFileHandle, $index_txt );
+fclose($ourFileHandle);
+//------------------------ css folder: 
+$ourFileHandle = fopen("$string3_2/".$file2, 'w') or die("can't open file");
+fwrite( $ourFileHandle, "" );
+fclose($ourFileHandle);
+//------------------------ HELPER folder: index
+$ourFileHandle = fopen("$string3_3/".$file, 'w') or die("can't open file");
+fwrite( $ourFileHandle, $index_txt );
+fclose($ourFileHandle);
+//------------------------ HELPER folder: 
+$ourFileHandle = fopen("$string3_3/".$file3, 'w') or die("can't open file");
+fwrite( $ourFileHandle, $admin_helper  );
+fclose($ourFileHandle);
+//------------------------ JS folder: index
+$ourFileHandle = fopen("$string3_4/".$file, 'w') or die("can't open file");
+fwrite( $ourFileHandle, $index_txt );
+fclose($ourFileHandle);
+
+//------------------------ LANGUAGE folder: index
+$ourFileHandle = fopen("$string3_5/".$file, 'w') or die("can't open file");
+fwrite( $ourFileHandle, $index_txt );
+fclose($ourFileHandle);
+//------------------------ LANGUAGE ENGLISH SUBfolder: index
+$ourFileHandle = fopen("$string3_5_1/".$file, 'w') or die("can't open file");
+fwrite( $ourFileHandle, $index_txt );
+fclose($ourFileHandle);
+//------------------------ LANGUAGE folder: 
+$ourFileHandle = fopen("$string3_5_1/".$file5_1, 'w') or die("can't open file");
+fwrite( $ourFileHandle, $admin_language );
+fclose($ourFileHandle);
+
+//------------------------ MODELS folder: index
+$ourFileHandle = fopen("$string3_6/".$file, 'w') or die("can't open file");
+fwrite( $ourFileHandle, $index_txt );
+fclose($ourFileHandle);
+//------------------------ MODELS folder: 
+$ourFileHandle = fopen("$string3_6/".$file1, 'w') or die("can't open file");
+fwrite( $ourFileHandle, $admin_model );
+fclose($ourFileHandle);
+//------------------------ MODELS folder: 
+$ourFileHandle = fopen("$string3_6/"."ONEPERVIEW.PHP", 'w') or die("can't open file");
+fwrite( $ourFileHandle, "" );
+fclose($ourFileHandle);
+
+//------------------------ VIEWS folder: INDEX 
+$ourFileHandle = fopen("$string3_7/".$file, 'w') or die("can't open file");
+fwrite( $ourFileHandle, $index_txt );
+fclose($ourFileHandle);
+//------------------------ VIEWS subfolder: INDEX 
+$ourFileHandle = fopen("$string3_7_1/".$file, 'w') or die("can't open file");
+fwrite( $ourFileHandle, $index_txt );
+fclose($ourFileHandle);
+//------------------------ VIEWS subfolder: VIEW.HTML.PHP 
+$ourFileHandle = fopen("$string3_7_1/view.html.php", 'w') or die("can't open file");
+fwrite( $ourFileHandle, $site_view_html_php );
+fclose($ourFileHandle);
+//------------------------ VIEWS subfolder: metadata XML 
+$ourFileHandle = fopen("$string3_7_1/metadata.xml", 'w') or die("can't open file");
+fwrite( $ourFileHandle, $site_metadata_xml );
+fclose($ourFileHandle);
+//------------------------ VIEWS subfolder tmpl: INDEX 
+$ourFileHandle = fopen("$string3_7_2/".$file, 'w') or die("can't open file");
+fwrite( $ourFileHandle, $index_txt );
+fclose($ourFileHandle);
+//------------------------ VIEWS subfolder tmpl: default 
+$ourFileHandle = fopen("$string3_7_2/default.php", 'w') or die("can't open file");
+fwrite( $ourFileHandle, $admin_view_tmpl_default );
+fclose($ourFileHandle);
+//------------------------ VIEWS subfolder tmpl: default XML
+$ourFileHandle = fopen("$string3_7_2/default.xml", 'w') or die("can't open file");
+fwrite( $ourFileHandle, $site_default_xml );
+fclose($ourFileHandle);
 
 				}
 			else { 	echo"please type the name";}
